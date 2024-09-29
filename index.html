@@ -29,7 +29,27 @@
     </div>
   </div>
 
-  <script src="index.js"></script>
+  <script>
+    function parseAreenaLink(event) {
+      const add_antennapod = document.getElementById("add_antennapod")
+      const target = event.explicitOriginalTarget
+      const re = /areena\.yle\.fi\/[\S\/]*(\d-[\d]+)/;
+      const found = target.value.trim().match(re)
+      const podcastId = found[1]
+      const rssUrl = `https://feeds.yle.fi/areena/v1/series/${podcastId}.rss`
+      subscribeLink = `https://antennapod.org/deeplink/subscribe/?url=${encodeURIComponent(rssUrl)}`
+
+      add_antennapod.onclick = () => {
+        alert(subscribeLink)
+        window.location.href = subscribeLink
+      }
+    }
+
+    const urlInput = document.getElementById("url")
+    urlInput.addEventListener("paste", parseAreenaLink)
+    urlInput.addEventListener("keyup", parseAreenaLink)
+    urlInput.addEventListener("input", parseAreenaLink)
+  </script>
 </body>
 
 </html>

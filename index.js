@@ -1,14 +1,6 @@
-const urlInput = document.getElementById("url")
-const add_antennapod = document.getElementById("add_antennapod")
-
-urlInput.onkeyup = (event) => {
+function parsePodcastLink(link) {
   const re = /areena\.yle\.fi\/podcastit\/([\d-]+)/;
-  const found = event.srcElement.value.match(re)
-  const podcastId = found[1]
-  const rssUrl = `https://feeds.yle.fi/areena/v1/series/${podcastId}.rss`
-  const subscribeLink = `antennapod-subscribe://${encodeURIComponent(rssUrl)}`.trim()
+  const found = link.match(re)
 
-  add_antennapod.onclick = () => {
-    window.location.href = subscribeLink
-  }
+  return found[1]
 }

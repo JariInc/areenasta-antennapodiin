@@ -2,12 +2,17 @@
   "name": "areenasta-antennapodiin",
   "author": "https://github.com/JariInc",
   "license": "GPL-3.0",
+  "type": "module",
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
     "daisyui": "^4.12.10",
+    "http-server": "^14.1.1",
+    "jsdom": "^25.0.1",
     "tailwindcss": "^3.4.13"
   },
   "scripts": {
-    "watch": "tailwindcss -i input.css -o output.css --watch"
+    "watch": "tailwindcss -i input.css -o output.css --watch",
+    "test": "node --test",
+    "start": "http-server"
   }
 }
