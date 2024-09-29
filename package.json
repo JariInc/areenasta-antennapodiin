@@ -15,6 +15,6 @@
     "test": "node --test",
     "start": "http-server",
     "clean": "rm -rf ./dist && mkdir ./dist",
-    "build": "npm run clean && tailwindcss -i input.css -o output.css &&§ cp index.html output.css ./dist/"
+    "build": "npm run clean && tailwindcss -i input.css -o output.css && cp index.html output.css ./dist/"
   }
 }
