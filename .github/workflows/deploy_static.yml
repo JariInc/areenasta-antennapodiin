@@ -55,7 +55,8 @@ jobs:
       - name: Download the artifact
         uses: actions/download-artifact@v4
         with:
-          name: build     
+          name: build
+          path: dist
       - name: Display structure of downloaded files
         run: ls -al dist
       - name: Setup Pages
