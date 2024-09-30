@@ -25,7 +25,7 @@
         </div>
 
         <div>
-          <button id="add_antennapod" class="btn">Tilaa AntennaPodilla</button>
+          <button id="add_antennapod" class="btn invisible">Tilaa AntennaPodilla</button>
         </div>
 
         <div class="flex flex-col items-center text-center gap-8">
@@ -43,12 +43,18 @@
       const target = event.explicitOriginalTarget
       const re = /areena\.yle\.fi\/[\S\/]*(\d-[\d]+)/;
       const found = target.value.trim().match(re)
-      const podcastId = found[1]
-      const rssUrl = `https://feeds.yle.fi/areena/v1/series/${podcastId}.rss`
-      subscribeLink = `https://antennapod.org/deeplink/subscribe/?url=${encodeURIComponent(rssUrl)}`
+      if(found) {
+        const podcastId = found[1]
+        const rssUrl = `https://feeds.yle.fi/areena/v1/series/${podcastId}.rss`
+        subscribeLink = `https://antennapod.org/deeplink/subscribe/?url=${encodeURIComponent(rssUrl)}`
 
-      add_antennapod.onclick = () => {
-        window.location.href = subscribeLink
+        add_antennapod.onclick = () => {
+          window.location.href = subscribeLink
+        }
+
+        add_antennapod.classList.remove('invisible');
+      } else {
+        add_antennapod.classList.add('invisible');
       }
     }
 
