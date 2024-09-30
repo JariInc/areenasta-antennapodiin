@@ -40,10 +40,10 @@
   <script>
     function parseAreenaLink(event) {
       const add_antennapod = document.getElementById("add_antennapod")
-      const target = event.explicitOriginalTarget
+      const target = event.explicitOriginalTarget || event.currentTarget || event.target
       const re = /areena\.yle\.fi\/[\S\/]*(\d-[\d]+)/;
       const found = target.value.trim().match(re)
-      if(found) {
+      if (found) {
         const podcastId = found[1]
         const rssUrl = `https://feeds.yle.fi/areena/v1/series/${podcastId}.rss`
         subscribeLink = `https://antennapod.org/deeplink/subscribe/?url=${encodeURIComponent(rssUrl)}`
